@@ -465,9 +465,9 @@ def get_research_questions():
     })
 
 if __name__ == '__main__':
-    print("🚀 Starting AI Project Risk Assessment Backend...")
-    print("📊 Research Tool for: Predicting Public Sector AI Project Failure in Kenya")
-    print("🔗 API running at: http://localhost:5000")
-    print("📁 Data storage: SQLite database at data/projects.db")
-    print("\n🌐 Frontend should be opened separately (open frontend/index.html)")
+    print(" Starting AI Project Risk Assessment Backend...")
+    print(" Research Tool for: Predicting Public Sector AI Project Failure in Kenya")
+    print(" API running at: http://localhost:5000")
+    print(" Data storage: SQLite database at data/projects.db")
+    print("\n Frontend should be opened separately (open frontend/index.html)")
     app.run(debug=True, port=5000)
