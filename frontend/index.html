@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Project Risk Assessment Tool - Kenya</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1>🇰🇪 AI Project Risk Assessment Tool</h1>
+            <p class="subtitle">Predicting Public Sector AI Project Failure in Kenya</p>
+            <div class="research-info">
+                <p><strong>Research:</strong> ML-Driven Risk Assessment Framework</p>
+                <p><strong>Purpose:</strong> Collect risk factors for predictive modeling</p>
+            </div>
+        </header>
+
+        <!-- Consent Form -->
+        <section class="consent-form" id="consentSection">
+            <h2>🔒 Research Participation Consent</h2>
+            <div class="consent-content">
+                <div class="consent-points">
+                    <p>✅ <strong>Purpose:</strong> This tool collects data on AI project risk factors for research on predicting project failure in Kenya's public sector.</p>
+                    <p>✅ <strong>Data Collected:</strong> Project characteristics, risk factors, outcomes. No personal identifiers.</p>
+                    <p>✅ <strong>Confidentiality:</strong> All data is anonymized and aggregated for research.</p>
+                    <p>✅ <strong>Voluntary:</strong> You may withdraw at any time.</p>
+                    <p>✅ <strong>Contact:</strong> research@institution.ac.ke</p>
+                </div>
+                
+                <div class="consent-checkbox">
+                    <label>
+                        <input type="checkbox" id="consentCheckbox">
+                        I understand and agree to participate in this research
+                    </label>
+                </div>
+                
+                <button class="btn-primary" onclick="startAssessment()">
+                    Start Risk Assessment
+                </button>
+            </div>
+        </section>
+
+        <!-- Risk Assessment Form -->
+        <section class="assessment-form hidden" id="assessmentSection">
+            <h2>📊 AI Project Risk Assessment</h2>
+            
+            <!-- Project Information -->
+            <div class="form-section">
+                <h3>Project Information</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="projectSector">Sector *</label>
+                        <select id="projectSector" required>
+                            <option value="">Select sector</option>
+                            <option value="health">Health</option>
+                            <option value="education">Education</option>
+                            <option value="agriculture">Agriculture</option>
+                            <option value="transport">Transport</option>
+                            <option value="finance">Finance</option>
+                            <option value="security">Security</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="projectBudget">Budget (KES Millions) *</label>
+                        <input type="number" id="projectBudget" min="0" max="10000" step="0.1" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="projectDuration">Duration (Months) *</label>
+                        <input type="number" id="projectDuration" min="1" max="60" required>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Risk Factors (Likert Scales) -->
+            <div class="form-section">
+                <h3>Risk Factor Assessment</h3>
+                <p>Rate each factor (1=Low Risk, 5=High Risk)</p>
+                
+                <div class="risk-factors">
+                    <!-- Technical Risks -->
+                    <div class="risk-category">
+                        <h4>Technical Risks</h4>
+                        <div class="likert-scale">
+                            <div class="scale-item">
+                                <label>Data Quality & Availability</label>
+                                <div class="scale-buttons">
+                                    <button onclick="setRisk('data_quality', 1)">1</button>
+                                    <button onclick="setRisk('data_quality', 2)">2</button>
+                                    <button onclick="setRisk('data_quality', 3)">3</button>
+                                    <button onclick="setRisk('data_quality', 4)">4</button>
+                                    <button onclick="setRisk('data_quality', 5)">5</button>
+                                </div>
+                                <span class="risk-value" id="data_quality_val">Not set</span>
+                            </div>
+                            
+                            <div class="scale-item">
+                                <label>Technical Expertise Level</label>
+                                <div class="scale-buttons">
+                                    <button onclick="setRisk('tech_expertise', 1)">1</button>
+                                    <button onclick="setRisk('tech_expertise', 2)">2</button>
+                                    <button onclick="setRisk('tech_expertise', 3)">3</button>
+                                    <button onclick="setRisk('tech_expertise', 4)">4</button>
+                                    <button onclick="setRisk('tech_expertise', 5)">5</button>
+                                </div>
+                                <span class="risk-value" id="tech_expertise_val">Not set</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Organizational Risks -->
+                    <div class="risk-category">
+                        <h4>Organizational Risks</h4>
+                        <div class="likert-scale">
+                            <div class="scale-item">
+                                <label>Stakeholder Support</label>
+                                <div class="scale-buttons">
+                                    <button onclick="setRisk('stakeholder', 1)">1</button>
+                                    <button onclick="setRisk('stakeholder', 2)">2</button>
+                                    <button onclick="setRisk('stakeholder', 3)">3</button>
+                                    <button onclick="setRisk('stakeholder', 4)">4</button>
+                                    <button onclick="setRisk('stakeholder', 5)">5</button>
+                                </div>
+                                <span class="risk-value" id="stakeholder_val">Not set</span>
+                            </div>
+                            
+                            <div class="scale-item">
+                                <label>Budget Stability</label>
+                                <div class="scale-buttons">
+                                    <button onclick="setRisk('budget_stability', 1)">1</button>
+                                    <button onclick="setRisk('budget_stability', 2)">2</button>
+                                    <button onclick="setRisk('budget_stability', 3)">3</button>
+                                    <button onclick="setRisk('budget_stability', 4)">4</button>
+                                    <button onclick="setRisk('budget_stability', 5)">5</button>
+                                </div>
+                                <span class="risk-value" id="budget_stability_val">Not set</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contextual Risks -->
+                    <div class="risk-category">
+                        <h4>Kenya-Specific Factors</h4>
+                        <div class="likert-scale">
+                            <div class="scale-item">
+                                <label>Infrastructure Reliability</label>
+                                <div class="scale-buttons">
+                                    <button onclick="setRisk('infrastructure', 1)">1</button>
+                                    <button onclick="setRisk('infrastructure', 2)">2</button>
+                                    <button onclick="setRisk('infrastructure', 3)">3</button>
+                                    <button onclick="setRisk('infrastructure', 4)">4</button>
+                                    <button onclick="setRisk('infrastructure', 5)">5</button>
+                                </div>
+                                <span class="risk-value" id="infrastructure_val">Not set</span>
+                            </div>
+                            
+                            <div class="scale-item">
+                                <label>Regulatory Compliance</label>
+                                <div class="scale-buttons">
+                                    <button onclick="setRisk('regulatory', 1)">1</button>
+                                    <button onclick="setRisk('regulatory', 2)">2</button>
+                                    <button onclick="setRisk('regulatory', 3)">3</button>
+                                    <button onclick="setRisk('regulatory', 4)">4</button>
+                                    <button onclick="setRisk('regulatory', 5)">5</button>
+                                </div>
+                                <span class="risk-value" id="regulatory_val">Not set</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Outcome -->
+            <div class="form-section">
+                <h3>Project Outcome (For Model Training)</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="projectStatus">Current Status</label>
+                        <select id="projectStatus">
+                            <option value="planning">Planning</option>
+                            <option value="implementation">Implementation</option>
+                            <option value="completed">Completed</option>
+                            <option value="failed">Failed/Delayed</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="successScore">Success Score (0-10)</label>
+                        <input type="range" id="successScore" min="0" max="10" value="5">
+                        <span id="scoreValue">5</span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="failureReason">Primary Failure Reason (if applicable)</label>
+                        <select id="failureReason">
+                            <option value="none">N/A - Successful</option>
+                            <option value="technical">Technical Challenges</option>
+                            <option value="budget">Budget Constraints</option>
+                            <option value="stakeholder">Stakeholder Issues</option>
+                            <option value="data">Data Problems</option>
+                            <option value="infrastructure">Infrastructure</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="action-buttons">
+                <button class="btn-primary" onclick="submitAssessment()">
+                    📤 Submit Assessment
+                </button>
+                <button class="btn-secondary" onclick="exportData()">
+                    💾 Export Data
+                </button>
+                <button class="btn-clear" onclick="resetForm()">
+                    🔄 Reset Form
+                </button>
+            </div>
+
+            <!-- Data Preview -->
+            <div class="preview-section">
+                <h3>📋 Assessment Preview</h3>
+                <pre id="dataPreview">Complete the form to see preview</pre>
+            </div>
+        </section>
+
+        <!-- Status Message -->
+        <div class="status-message hidden" id="statusMessage"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
