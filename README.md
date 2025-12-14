@@ -1,5 +1,7 @@
-**AI Project Risk Assessment Tool for Kenyan Public Sector**
- **Research Overview**
+**AI Project Risk Assessment Tool for Kenyan Public Sector**<br>
+
+ **Research Overview**<br>
+
 Research Title: Predicting Public Sector AI Project Failure in Kenya: A Machine Learning–Driven Risk Assessment and Mitigation Framework
 
 This tool implements a quantitative data collection system for researching AI project failure risks in Kenya's public sector. It collects structured risk factor data to support machine learning model development for failure prediction.
@@ -14,22 +16,43 @@ This tool implements a quantitative data collection system for researching AI pr
 - Validation Objective: Provide baseline data for comparative analysis with traditional methods
 
  **System Architecture**
-Three-Tier Architecture
-text
-┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
-│   Frontend      │     │    Backend      │     │   Data Storage  │
-│   (Browser)     │◄───►│   (Python)      │◄───►│   (SQLite/JSON) │
-│ • HTML/CSS/JS   │     │ • HTTP Server   │     │ • Assessments   │
-│ • LocalStorage  │     │ • API Endpoints │     │ • Risk Factors  │
-│ • CSV Export    │     │ • CORS Support  │     │ • Analytics     │
-└─────────────────┘     └─────────────────┘     └─────────────────┘
+
+graph TB
+    subgraph "Client Tier (Frontend)"
+        UI["<b>User Interface</b><br/>Browser-based Application<br/>• HTML5/CSS3/JavaScript<br/>• React/Vue.js Components<br/>• Real-time Validation<br/>• Accessibility Features<br/>• LocalStorage Fallback"]
+    end
+    
+    subgraph "Application Tier (Backend)"
+        API["<b>API Gateway & Business Logic</b><br/>• Python Flask/Node.js Express<br/>• RESTful Endpoints<br/>• Data Validation<br/>• Authentication/Authorization<br/>• Rate Limiting"]
+    end
+    
+    subgraph "Data Tier (Storage)"
+        DB1["<b>PostgreSQL</b><br/>• Structured Data<br/>• ACID Compliance<br/>• Relational Schema"]
+        DB2["<b>MongoDB</b><br/>• Unstructured Data<br/>• JSON Documents<br/>• Flexible Schema"]
+        DB3["<b>Redis</b><br/>• Caching Layer<br/>• Session Management<br/>• Real-time Analytics"]
+    end
+    
+    UI -- "HTTPS/JSON API Calls<br/>Port: 3000" --> API
+    API -- "Database Operations<br/>Connection Pooling" --> DB1
+    API -- "Document Operations<br/>Flexible Queries" --> DB2
+    API -- "Cache Operations<br/>Pub/Sub Messaging" --> DB3
+    
+    style UI fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style API fill:#f3e5f5,stroke:#4a148c,stroke-width:2px
+    style DB1 fill:#e8f5e8,stroke:#1b5e20,stroke-width:2px
+    style DB2 fill:#fff3e0,stroke:#e65100,stroke-width:2px
+    style DB3 fill:#fce4ec,stroke:#880e4f,stroke-width:2px
+
 **Key Components**
+
 Component	Technology	Purpose
 Frontend Interface	HTML5, CSS3, JavaScript	Data collection, validation, user interaction
 Backend Server	Python HTTP Server (zero-dependency)	API endpoints, data persistence
 Data Storage	SQLite + JSON files	Structured and raw data storage
 Export Format	CSV/JSON	Research data sharing and analysis
+
  **Quantitative Data Collected**
+
 **1. Project Information**
 - Sector: Health, Education, Agriculture, Transport, Finance, Security
 
@@ -38,12 +61,14 @@ Export Format	CSV/JSON	Research data sharing and analysis
 - Duration: Months (discrete, ratio scale)
 
 **2. Risk Factors (Likert Scale 1-5)**
+
 Category	Specific Factors	Measurement Rationale
 Technical	Data Quality, Technical Expertise	System capability and implementation readiness
 Organizational	Stakeholder Support, Budget Stability	Institutional commitment and resource allocation
 Contextual	Infrastructure Reliability, Regulatory Compliance	Kenya-specific implementation challenges
 
 **3. Outcome Metrics**
+
 Project Status: Planning, Implementation, Completed, Failed
 
 Success Score: 0-10 scale (ordinal)
@@ -51,6 +76,7 @@ Success Score: 0-10 scale (ordinal)
 Failure Reason: Technical, Budget, Stakeholder, Data, Infrastructure
 
  **Implementation Details**
+
 Frontend Features
 Responsive Design: Mobile-first CSS with media queries
 
@@ -74,6 +100,7 @@ Data Persistence: SQLite database with JSON backups
 Research Analytics: Built-in statistical functions
 
 **Getting Started**
+
 Quick Start (Frontend Only - No Installation)
 Open frontend/index.html in any modern web browser
 
@@ -107,6 +134,7 @@ GET /api/export - Export data as CSV
 GET /api/health - Server health check
 
 **📁 Project Structure**
+
 text
 AI-PROJECT-RISK-TOOL/
 ├── README.md                    # This file
@@ -123,8 +151,11 @@ AI-PROJECT-RISK-TOOL/
         ├── assessments.db      # SQLite database
         ├── assessments.json    # JSON backup
         └── *.csv               # Export files
+
 **Ethical Considerations**
+
 Privacy Protection
+
 Pseudonymization: Session-based identifiers only
 
 Data Minimization: Collects only research-essential data
@@ -134,6 +165,7 @@ Local Processing: Client-side data handling when possible
 Explicit Consent: Multi-tiered consent system
 
 Research Ethics Compliance
+
 Informed Consent: Clear explanation of research purpose
 
 Voluntary Participation: No coercion, right to withdraw
@@ -143,7 +175,9 @@ Data Security: Local storage with option for server backup
 Transparency: Open-source tool with documented methodology
 
  **Data Quality Assurance**
+
 Validation Rules
+
 Range Validation: Numerical bounds (e.g., budget > 0)
 
 Completeness: Required fields enforcement
@@ -160,6 +194,7 @@ Accuracy: <5% data entry errors
 Timeliness: Real-time submission tracking
 
 **Research Applications**
+
 This tool supports the following research activities:
 
 - Risk Factor Analysis: Identifying key failure predictors in Kenyan context
